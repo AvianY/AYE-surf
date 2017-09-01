@@ -45,6 +45,7 @@ static UriParameters uriparams[] = {
 static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
                                     WEBKIT_FIND_OPTIONS_WRAP_AROUND;
 
+#define HOMEPAGE "https://www.duckduckgo.com/"
 #define SETPROP(p, q) { \
         .v = (const char *[]){ "/bin/sh", "-c", \
              "prop=\"`xprop -id $2 $0 " \
