@@ -56,6 +56,17 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
         } \
 }
 
+/* BM_ADD(readprop) */
+#define BM_ADD(r) {\
+        .v = (const char *[]){ "/bin/sh", "-c", \
+             "(echo $(xprop -id $0 $1) | cut -d '\"' -f2 " \
+             "| sed 's/.*https*:\\/\\/\\(www\\.\\)\\?//' && cat ~/.surf/bookmarks) " \
+             "| awk '!seen[$0]++' > ~/.surf/bookmarks.tmp && " \
+             "mv ~/.surf/bookmarks.tmp ~/.surf/bookmarks", \
+             winid, r, NULL \
+        } \
+}
+
 /* DOWNLOAD(URI, referer) */
 #define DOWNLOAD(d, r) { \
         .v = (const char *[]){ "/bin/sh", "-c", \
@@ -104,6 +115,8 @@ static Key keys[] = {
 	/* modifier              keyval          function    arg */
 	{ MODKEY,                GDK_KEY_s,      spawn,      SETPROP("_SURF_URI", "_SURF_GO") },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
+	{ MODKEY,                GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
+ 	/* { MODKEY,GDK_SHIFT_MASK, GDK_KEY_b,      spawn,      SETPROP1("_SURF_URI", "_SURF_GO", PROMPT_GO) }, */
 
 	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
 	{ MODKEY,                GDK_KEY_c,      stop,       { 0 } },
