@@ -189,4 +189,5 @@ static SearchEngine searchengines[] = {
     { "pslen", "https://en.pons.com/translate?q=%s&l=ensl&in=sl&lf=sl" },
     { "jisho", "http://jisho.org/search/%s" },
     { "sskj", "http://bos.zrc-sazu.si/cgi/a03.exe?name=sskj_testa&expression=%s&hs=1" },
+    { "so", "https://stackoverflow.com/search?q=%s" },
 };
