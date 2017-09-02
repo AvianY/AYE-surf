@@ -138,7 +138,7 @@ static Key keys[] = {
 	/* { MODKEY,                GDK_KEY_h,      scroll,     { .i = 'l' } }, */
 
 
-	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_equal,  zoom,       { .i = +1  } },
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_plus,   zoom,       { .i = +1  } },
 	{ MODKEY,                GDK_KEY_minus,  zoom,       { .i = -1 } },
 	{ MODKEY,                GDK_KEY_equal,  zoom,       { .i = 0 } },
 
@@ -178,6 +178,15 @@ static Button buttons[] = {
 
 static SearchEngine searchengines[] = {
     { "g",   "http://www.google.com/search?q=%s"   },
+    { "gi",   "https://www.google.si/search?tbm=isch&q=%s&tbs=imgo:1&gws_rd=cr&dcr=0&ei=cJ-qWay"   },
+    { "y",   "https://search.yahoo.com/search?p=%s"   },
+    { "yi",   "http://images.search.yahoo.com/search/images?p=%s"   },
+    { "d",   "https://duckduckgo.com/?q=%s&ia=audio"   },
+    { "di",   "https://duckduckgo.com/?q=%s&ia=images&iax=1&atb=v78-2"   },
     { "leo", "http://dict.leo.org/ende?search=%s" },
     { "yt", "https://www.youtube.com/results?search_query=%s" },
+    { "pensl", "https://en.pons.com/translate?q=%s&l=ensl&in=en&lf=en" },
+    { "pslen", "https://en.pons.com/translate?q=%s&l=ensl&in=sl&lf=sl" },
+    { "jisho", "http://jisho.org/search/%s" },
+    { "sskj", "http://bos.zrc-sazu.si/cgi/a03.exe?name=sskj_testa&expression=%s&hs=1" },
 };
