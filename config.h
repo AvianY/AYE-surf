@@ -106,6 +106,17 @@ static SiteStyle styles[] = {
 
 #define MODKEY GDK_CONTROL_MASK
 
+#define BM_PICK { .v = (char *[]){ "/bin/sh", "-c", \
+"xprop -id $0 -f _SURF_GO 8s -set _SURF_GO \
+`cat ~/.surf/bookmarks | dmenu || exit 0`", \
+winid, NULL } }
+
+#define BM_ADD { .v = (char *[]){ "/bin/sh", "-c", \
+"(echo `xprop -id $0 _SURF_URI | cut -d '\"' -f 2` && \
+cat ~/.surf/bookmarks) | sort -u > ~/.surf/bookmarks_new && \
+mv ~/.surf/bookmarks_new ~/.surf/bookmarks", \
+winid, NULL } }
+
 /* hotkeys */
 /*
  * If you use anything else but MODKEY and GDK_SHIFT_MASK, don't forget to
@@ -115,7 +126,8 @@ static Key keys[] = {
 	/* modifier              keyval          function    arg */
 	{ MODKEY,                GDK_KEY_s,      spawn,      SETPROP("_SURF_URI", "_SURF_GO") },
 	{ MODKEY,                GDK_KEY_slash,  spawn,      SETPROP("_SURF_FIND", "_SURF_FIND") },
-	{ MODKEY,                GDK_KEY_b,      spawn,      BM_ADD("_SURF_URI") },
+	{ MODKEY,                GDK_KEY_b,      spawn,      BM_PICK},
+	{ MODKEY|GDK_SHIFT_MASK, GDK_KEY_b,      spawn,      BM_ADD},
  	/* { MODKEY,GDK_SHIFT_MASK, GDK_KEY_b,      spawn,      SETPROP1("_SURF_URI", "_SURF_GO", PROMPT_GO) }, */
 
 	{ 0,                     GDK_KEY_Escape, stop,       { 0 } },
