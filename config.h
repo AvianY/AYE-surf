@@ -202,4 +202,5 @@ static SearchEngine searchengines[] = {
     { "jisho", "http://jisho.org/search/%s" },
     { "sskj", "http://bos.zrc-sazu.si/cgi/a03.exe?name=sskj_testa&expression=%s&hs=1" },
     { "so", "https://stackoverflow.com/search?q=%s" },
+    { "gh", "https://github.com/search?q=%s&type=Everything&repo=&langOverride=&start_value=1" },
 };
